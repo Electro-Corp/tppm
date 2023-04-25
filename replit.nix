@@ -1,6 +1,7 @@
 { pkgs }: {
 	deps = [
-		pkgs.xterm
+		pkgs.imagemagick6_light
+  pkgs.xterm
   pkgs.clang_12
 		pkgs.ccls
 		pkgs.gdb
