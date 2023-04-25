@@ -25,62 +25,21 @@ int main(int args, char* argv[]){
 	while(no < 3)
 		if(buffer[i++] == '\n')
 		no++; 
+  char* m = (char*)malloc((sizeof(char) *  (sizeof(buffer)/sizeof(buffer[0]))));
+  strcpy(m,buffer);
+  char* p = strtok(m," ");
+  char* j = strtok(p, "\n");
+  j = strtok(NULL, "\n");
+  width = atoi(j);
   char* out;
   out = strtok(buffer," ");
-	/*for(i = i; i < sizeof(buffer)/sizeof(buffer[0]); i++){
-		//printf("%d, %d\n",g,i);
-		// parse
-		int s = 0;
-		color tmp = {0,0,0};
-		if(buffer[i] == '\n')
-		s++;
-		else if(buffer[i] != ' '){
-			while(s < 3){
-				while(buffer[i++] != ' '){
-					int c= 0;
-					int n = 0;
-   			 	sscanf(&buffer[i], "%d", &c);
-          printf("%c\n",buffer[i]);
-          getchar();
-          if(c >= 10)i++;
-          if(c >= 100) i+=2;
-					switch(s){
-						case 0:
-						tmp.r = c;
-						break;
-						case 1:
-						tmp.g = c;
-						break;
-						case 2:
-						tmp.b = c;
-						break;
-            default:
-            printf("guh?\n");
-            exit(1);
-            break;
-					}
-				}
-
-				s++;
-				//if(buffer[i] == ' ') s++;
-				
-			}
-			Colors[g++] = tmp;
-      //printf("%d,%d,%d \n",Colors[g-1].r,Colors[g-1].g, Colors[g-1].b);
-      //getchar();
-		}
-	}*/
+  //printf("init = %s\n",out);
   int count = 0;
   color tmp = {0,0,0};
-  int k = 0;
+  int k = -1;
   while (out != NULL)
   {  
-    if(k == 1){
-        printf("%s\n",out);
-        sscanf(out, "%d", &width);
-        printf("%d\n",width);
-    }
-    else if(count < 3){
+    if(count < 3){
         int c = 0;
         sscanf(out, "%d", &c);
         switch(count){
@@ -103,7 +62,7 @@ int main(int args, char* argv[]){
       Colors[g++] = tmp;
     }
     count++;
-    k++;
+    
     out = strtok(NULL, " ");
   }
   int c = 0;
@@ -112,7 +71,7 @@ int main(int args, char* argv[]){
     //getchar();
     printf("\033[48;2;%d;%d;%dm ",Colors[c].r,Colors[c].g, Colors[c].b);
     if(i % 1 == 0)c++;
-    if(i % (width+3) == 0)printf("\n");
+    if(i % (width) == 0)printf("\n");
   }
 }
 void usage(){
