@@ -1,5 +1,5 @@
 compile = "gcc src/main.c -o tppm"
-run = "./tppm src/test.ppm"
+run = "./tppm r.ppm"
 hidden = ["main", "main-debug", "**/*.o", "**/*.d", ".ccls-cache", "Makefile"]
 
 [nix]
